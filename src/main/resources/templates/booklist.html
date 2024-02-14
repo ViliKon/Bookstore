@@ -5,26 +5,30 @@
 <head>
 <title>Book List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 
 <body>
 	<h1>Books</h1>
-	<table>
+	<table class="table table-striped" >
 		<tbody>
-		<tr>
-		<th>Author</th>
-		<th>Title</th>
-		<th>ISBN</th>
-		<th>Year</th>
+			<tr>
+				<th>Author</th>
+				<th>Title</th>
+				<th>ISBN</th>
+				<th>Year</th>
+			</tr>
 			<tr th:each="books : ${books}">
-			
+
 				<td th:text="${books.author}"></td>
 				<td th:text="${books.title}"></td>
 				<td th:text="${books.isbn}"></td>
 				<td th:text="${books.releaseYear}"></td>
+				<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${books.id})}">Delete</a> <a th:href="@{/edit/{id}(id=${books.id})}"> Edit</a></td>
 			</tr>
 		</tbody>
 	</table>
+	<a class="btn btn-success" href="/add" >Add book</a>
 </body>
 
 </html>
