@@ -9,24 +9,30 @@
 
 <body>
 	<h1>Edit book</h1>
-	<form th:object="${book}" th:action="@{save}" action="#" method="post">
-		<input type="hidden" th:field="*{id}" /> <label for="author">Author</label>
-		<input type="text" id="author" th:fields="*{author}"
-			class="form-control" />
-		<div style="clear: both; display: block; height: 10px"></div>
+
+	<form th:object="${book}" th:action="@{/save}" action="#" method="post">
+		<input type="hidden" th:field="*{id}" /><label for="author">Author</label>
+		<input type="text" id="author" th:field="*{author}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
 		<label for="title">Title</label> <input type="text" id="title"
-			th:fields="*{title}" class="form-control" />
-		<div style="clear: both; display: block; height: 10px"></div>
-		<label for="isbn">ISBN</label> <input type="text" id="isbn"
-			th:fields="*{isbn}" class="form-control" />
-		<div style="clear: both; display: block; height: 10px"></div>
+			th:field="*{title}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<label for="isbn">ISBN</label> <input type="text" th:field="*{isbn}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
 		<label for="releaseYear">Year</label> <input type="text"
-			id="releaseYear" th:fields="*{releaseYear}" class="form-control" />
-		<div style="clear: both; display: block; height: 10px"></div>
+			id="releaseYear" th:field="*{releaseYear}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
 
-		<input type="submit" class="btn btn-primary" value="Save"></input>
-
+		<label for="catlist">Category</label> 
+		<select id="catlist" th:field="*{category}" class="form-control">
+			<option th:each="category : ${categories}"
+				th:value="${category.categoryid}" th:text="${category.name}"></option>
+		</select>
+		
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<input type="submit" value="Save"></input>
 	</form>
+
 </body>
 
 </html>
